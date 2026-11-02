@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candy Blast</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;font-family:Arial,sans-serif;
+ color:white;text-align:center;
+ background:radial-gradient(circle at top,#49318d,#17102f 65%,#090817);
+ padding:18px 10px 30px
+}
+h1{font-size:34px;margin:8px 0;color:#ffe36e;text-shadow:0 3px 12px #ff4ca6}
+.subtitle{color:#ded5ff;margin:5px 0 18px}
+.panel{
+ max-width:440px;margin:12px auto;padding:14px;
+ background:#ffffff16;border:1px solid #ffffff30;
+ border-radius:20px;box-shadow:0 8px 25px #0005
+}
+.stats{display:flex;justify-content:space-around;gap:8px}
+.stat{flex:1;background:#ffffff16;border-radius:13px;padding:10px 4px}
+.stat small{display:block;color:#d8caff;font-size:12px}
+.stat strong{font-size:22px;color:#ffe36e}
+#board{
+ width:min(94vw,430px);aspect-ratio:1;margin:15px auto;
+ display:grid;grid-template-columns:repeat(8,1fr);gap:4px;
+ padding:7px;background:#100c28;border:2px solid #a98cff;
+ border-radius:17px;touch-action:pan-y;user-select:none
+}
+.cell{
+ min-width:0;aspect-ratio:1;border-radius:10px;
+ display:flex;align-items:center;justify-content:center;
+ font-size:clamp(19px,6vw,34px);
+ background:linear-gradient(145deg,#ffffff27,#ffffff08);
+ box-shadow:inset 0 2px 4px #ffffff22,0 2px 3px #0005;
+ cursor:pointer;transition:transform .12s,background .12s
+}
+.cell.selected{background:#ffe36e66;outline:3px solid #ffe36e;transform:scale(.91)}
+.cell.empty{visibility:hidden}
+button{
+ border:0;border-radius:13px;padding:12px 19px;
+ font-size:15px;font-weight:bold;color:#271443;
+ background:linear-gradient(135deg,#ffe875,#ffae50);
+ cursor:pointer;margin:5px
+}
+button:active{transform:scale(.96)}
+#message{min-height:26px;color:#ffe875;font-weight:bold}
+#levelText{color:#d9caff;margin-top:10px}
+#overlay{
+ display:none;position:fixed;inset:0;background:#08051ddd;
+ align-items:center;justify-content:center;padding:20px;z-index:5
+}
+.dialog{background:#35245e;border:2px solid #ffe36e;border-radius:22px;padding:28px;max-width:330px;width:100%}
+.dialog h2{color:#ffe36e;font-size:30px}
+footer{font-size:12px;color:#b9addd;margin-top:20px}
+</style>
+</head>
+<body>
+<h1>🍬 CANDY BLAST 🍭</h1>
+<p class="subtitle">Match the candies • Make a high score!</p>
+
+<div class="panel">
+ <div class="stats">
+  <div class="stat"><small>SCORE</small><strong id="score">0</strong></div>
+  <div class="stat"><small>MOVES</small><strong id="moves">25</strong></div>
+  <div class="stat"><small>TARGET</small><strong id="target">500</strong></div>
+ </div>
+ <div id="levelText">LEVEL 1</div>
+</div>
+
+<div id="board"></div>
+<div id="message">Match 3 or more candies!</div>
+<button onclick="restart()">↻ Restart</button>
+<button onclick="toggleSound()" id="soundBtn">🔊 Sound ON</button>
+
+<div id="overlay">
+ <div class="dialog">
+  <h2 id="resultTitle">Level Complete!</h2>
+  <p id="resultText"></p>
+  <button onclick="nextLevel()" id="nextBtn">Next Level ➜</button>
+  <button onclick="restart()">Play Again</button>
+ </div>
+</div>
+<footer>SOHAN STUDIO • CANDY BLAST</footer>
+
+<script>
+const SIZE=8;
+const candies=["🍬","🍭","🍫","🍩","🍪","🧁"];
+let board=[],score=0,moves=25,level=1,target=500;
+let selected=null,busy=false,soundOn=true;
+let audioCtx=null;
+
+const boardEl=document.getElementById("board");
+const messageEl=document.getElementById("message");
+
+function randomCandy(){
+ return candies[Math.floor(Math.random()*candies.length)];
+}
+
+function makeBoard(){
+ board=Array.from({length:SIZE},()=>Array(SIZE).fill(null));
+ for(let r=0;r<SIZE;r++){
+  for(let c=0;c<SIZE;c++){
+   let candy;
+   do{
+    candy=randomCandy();
+   }while(
+    (c>=2&&board[r][c-1]===candy&&board[r][c-2]===candy)||
+    (r>=2&&board[r-1][c]===candy&&board[r-2][c]===candy)
+   );
+   board[r][c]=candy;
+  }
+ }
+}
+
+function render(){
+ boardEl.innerHTML="";
+ for(let r=0;r<SIZE;r++){
+  for(let c=0;c<SIZE;c++){
+   const cell=document.createElement("div");
+   cell.className="cell";
+   cell.textContent=board[r][c]||"";
+   cell.dataset.r=r;
+   cell.dataset.c=c;
+   if(!board[r][c])cell.classList.add("empty");
+   if(selected&&selected.r===r&&selected.c===c)cell.classList.add("selected");
+   cell.addEventListener("click",()=>choose(r,c));
+   boardEl.appendChild(cell);
+  }
+ }
+ document.getElementById("score").textContent=score;
+ document.getElementById("moves").textContent=moves;
+ document.getElementById("target").textContent=target;
+ document.getElementById("levelText").textContent="LEVEL "+level;
+}
+
+function findMatches(){
+ const found=new Set();
+ for(let r=0;r<SIZE;r++){
+  let start=0;
+  for(let c=1;c<=SIZE;c++){
+   if(c<SIZE&&board[r][c]&&board[r][c]===board[r][start])continue;
+   if(board[r][start]&&c-start>=3){
+    for(let k=start;k<c;k++)found.add(r+","+k);
+   }
+   start=c;
+  }
+ }
+ for(let c=0;c<SIZE;c++){
+  let start=0;
+  for(let r=1;r<=SIZE;r++){
+   if(r<SIZE&&board[r][c]&&board[r][c]===board[start][c])continue;
+   if(board[start][c]&&r-start>=3){
+    for(let k=start;k<r;k++)found.add(k+","+c);
+   }
+   start=r;
+  }
+ }
+ return [...found].map(x=>x.split(",").map(Number));
+}
+
+function playSound(){
+ if(!soundOn)return;
+ try{
+  audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
+  const oscillator=audioCtx.createOscillator();
+  const gain=audioCtx.createGain();
+  oscillator.connect(gain);gain.connect(audioCtx.destination);
+  oscillator.frequency.value=620;
+  gain.gain.setValueAtTime(.08,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.13);
+  oscillator.start();oscillator.stop(audioCtx.currentTime+.13);
+ }catch(e){}
+}
+
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
+
+async function clearBoard(){
+ let total=0;
+ while(true){
+  const matches=findMatches();
+  if(!matches.length)break;
+  total+=matches.length;
+  matches.forEach(([r,c])=>board[r][c]=null);
+  score+=matches.length*10;
+  playSound();
+  render();
+  await wait(170);
+
+  for(let c=0;c<SIZE;c++){
+   let write=SIZE-1;
+   for(let r=SIZE-1;r>=0;r--){
+    if(board[r][c]){
+     board[write][c]=board[r][c];
+     if(write!==r)board[r][c]=null;
+     write--;
+    }
+   }
+   for(let r=write;r>=0;r--)board[r][c]=randomCandy();
+  }
+  render();
+  await wait(150);
+ }
+ return total;
+}
+
+function adjacent(a,b){
+ return Math.abs(a.r-b.r)+Math.abs(a.c-b.c)===1;
+}
+
+async function choose(r,c){
+ if(busy)return;
+ const current={r,c};
+ if(!selected){
+  selected=current;render();return;
+ }
+ if(selected.r===r&&selected.c===c){
+  selected=null;render();return;
+ }
+ if(!adjacent(selected,current)){
+  selected=current;render();return;
+ }
+ const first=selected;
+ selected=null;
+ busy=true;
+ [board[first.r][first.c],board[r][c]]=
+ [board[r][c],board[first.r][first.c]];
+ render();
+ await wait(120);
+ if(!findMatches().length){
+  [board[first.r][first.c],board[r][c]]=
+  [board[r][c],board[first.r][first.c]];
+  messageEl.textContent="No match! Try another move.";
+  render();
+ }else{
+  moves--;
+  messageEl.textContent="Great move! 🍬";
+  await clearBoard();
+  if(score>=target){
+   finish(true);
+  }else if(moves<=0){
+   finish(false);
+  }else{
+   messageEl.textContent="Keep matching candies!";
+  }
+ }
+ busy=false;
+}
+
+function finish(won){
+ document.getElementById("resultTitle").textContent=
+ won?"🎉 Level Complete!":"Game Over!";
+ document.getElementById("resultText").textContent=
+ won?"Amazing! Your score: "+score:
+ "Target not reached. Final score: "+score;
+ document.getElementById("nextBtn").style.display=won?"inline-block":"none";
+ document.getElementById("overlay").style.display="flex";
+}
+
+function restart(){
+ document.getElementById("overlay").style.display="none";
+ score=0;moves=25;selected=null;busy=false;
+ makeBoard();render();
+ messageEl.textContent="Match 3 or more candies!";
+}
+
+function nextLevel(){
+ level++;
+ target+=500;
+ moves=25;
+ score=0;
+ document.getElementById("overlay").style.display="none";
+ makeBoard();render();
+ messageEl.textContent="Welcome to Level "+level+"!";
+}
+
+function toggleSound(){
+ soundOn=!soundOn;
+ document.getElementById("soundBtn").textContent=
+ soundOn?"🔊 Sound ON":"🔇 Sound OFF";
+}
+
+let touchStart=null;
+boardEl.addEventListener("touchstart",e=>{
+ const cell=e.target.closest(".cell");
+ if(!cell||busy)return;
+ touchStart={
+  r:Number(cell.dataset.r),c:Number(cell.dataset.c),
+  x:e.touches[0].clientX,y:e.touches[0].clientY
+ };
+},{passive:true});
+
+boardEl.addEventListener("touchend",e=>{
+ if(!touchStart||busy)return;
+ const dx=e.changedTouches[0].clientX-touchStart.x;
+ const dy=e.changedTouches[0].clientY-touchStart.y;
+ if(Math.max(Math.abs(dx),Math.abs(dy))<15){
+  touchStart=null;return;
+ }
+ let r=touchStart.r,c=touchStart.c;
+ if(Math.abs(dx)>Math.abs(dy))c+=dx>0?1:-1;
+ else r+=dy>0?1:-1;
+ const old=touchStart;touchStart=null;
+ if(r>=0&&r<SIZE&&c>=0&&c<SIZE){
+  selected={r:old.r,c:old.c};
+  choose(r,c);
+ }
+},{passive:true});
+
+makeBoard();
+render();
+</script>
+</body>
+</html>
