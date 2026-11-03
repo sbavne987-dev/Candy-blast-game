@@ -18,25 +18,12 @@ body.world3{background:linear-gradient(#65c9ed,#347bb5,#172b63)}
 body.world4{background:linear-gradient(#ffb2d7,#bb65ae,#542b83)}
 body.world5{background:linear-gradient(#8bdb9a,#3d9c82,#174c56)}
 body.light{color:#38224e;background:linear-gradient(#fff0f8,#d8eaff)!important}
-
-/* HOME MAP */
 #home{padding:0 0 20px}
-.game-topbar{
- position:sticky;top:0;z-index:10;
- display:flex;align-items:center;justify-content:space-around;
- padding:8px 5px;gap:4px;
- background:linear-gradient(90deg,#302044,#604276,#302044);
- border-bottom:3px solid #f6d16c;
- box-shadow:0 4px 12px #0006
-}
+.game-topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-around;padding:8px 5px;gap:4px;background:linear-gradient(90deg,#302044,#604276,#302044);border-bottom:3px solid #f6d16c;box-shadow:0 4px 12px #0006}
 .top-stat{flex:1;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:3px;font-size:16px}
 .top-stat b{color:#ffe36e;font-size:18px}
 .top-stat small{width:100%;text-align:center;font-size:9px;color:#e8d8ff}
-.map-settings,.iconbtn{
- width:43px;height:43px;border-radius:50%;
- border:2px solid #ffe36e;background:#ffffff25;
- font-size:22px;color:white
-}
+.map-settings,.iconbtn{width:43px;height:43px;border-radius:50%;border:2px solid #ffe36e;background:#ffffff25;font-size:22px;color:white}
 .map-heading{text-align:center;padding:18px 5px 12px}
 .map-logo{font-size:clamp(26px,7vw,37px);font-weight:1000;color:#ffe36e;text-shadow:0 3px #a7468b,0 5px 15px #ff75c9}
 .map-subtitle{color:#fff0d5;letter-spacing:3px;font-size:11px;margin-top:5px}
@@ -44,52 +31,19 @@ body.light{color:#38224e;background:linear-gradient(#fff0f8,#d8eaff)!important}
 .progress-label{display:flex;justify-content:space-between;font-size:12px;font-weight:bold}
 .progress-track{height:8px;background:#ffffff40;border-radius:20px;margin-top:8px;overflow:hidden}
 .progress-fill{height:100%;width:0;background:linear-gradient(90deg,#ffe36e,#ff80c4);border-radius:20px}
-#candyMap{
- position:relative;min-height:1800px;padding:22px 10px 50px;
- overflow:hidden;border-top:3px solid #fbdc86;border-bottom:3px solid #fbdc86;
- background:linear-gradient(180deg,#b76aca,#8650ad 25%,#5289bc 50%,#55b99a 75%,#347c6a)
-}
-#candyMap:before{
- content:"";position:absolute;inset:0;opacity:.25;
- background-image:radial-gradient(circle,#fff 2px,transparent 3px);
- background-size:35px 38px;pointer-events:none
-}
-.map-scenery{
- position:absolute;left:0;width:100%;height:350px;
- display:flex;align-items:center;justify-content:space-around;
- font-size:clamp(35px,10vw,60px);
- opacity:.85;pointer-events:none;
- filter:drop-shadow(0 5px 5px #0004)
-}
-.scenery1{top:20px}
-.scenery2{top:390px}
-.scenery3{top:760px}
-.scenery4{top:1130px}
-.scenery5{top:1500px}
+#candyMap{position:relative;min-height:1800px;padding:22px 10px 50px;overflow:hidden;border-top:3px solid #fbdc86;border-bottom:3px solid #fbdc86;background:linear-gradient(180deg,#b76aca,#8650ad 25%,#5289bc 50%,#55b99a 75%,#347c6a)}
+#candyMap:before{content:"";position:absolute;inset:0;opacity:.25;background-image:radial-gradient(circle,#fff 2px,transparent 3px);background-size:35px 38px;pointer-events:none}
+.map-scenery{position:absolute;left:0;width:100%;height:350px;display:flex;align-items:center;justify-content:space-around;font-size:clamp(35px,10vw,60px);opacity:.85;pointer-events:none;filter:drop-shadow(0 5px 5px #0004)}
+.scenery1{top:20px}.scenery2{top:390px}.scenery3{top:760px}.scenery4{top:1130px}.scenery5{top:1500px}
 #mapPath{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:5px 0}
-.world-label{
- background:#392052dd;color:#fff4b7;border:2px solid #ffe36e;
- border-radius:20px;padding:10px 18px;margin:16px 0 8px;
- font-size:14px;font-weight:1000;text-shadow:0 2px 3px #000
-}
+.world-label{background:#392052dd;color:#fff4b7;border:2px solid #ffe36e;border-radius:20px;padding:10px 18px;margin:16px 0 8px;font-size:14px;font-weight:1000;text-shadow:0 2px 3px #000}
 .level-row{width:100%;height:88px;display:flex;align-items:center;position:relative}
 .level-row:nth-child(odd){justify-content:flex-start;padding-left:16%}
 .level-row:nth-child(even){justify-content:flex-end;padding-right:17%}
-.level-row:after{
- content:"";position:absolute;width:65px;height:28px;
- border-bottom:5px dotted #fff1a7;border-radius:50%;
- z-index:-1
-}
+.level-row:after{content:"";position:absolute;width:65px;height:28px;border-bottom:5px dotted #fff1a7;border-radius:50%;z-index:-1}
 .level-row:nth-child(odd):after{right:25%;transform:rotate(20deg)}
 .level-row:nth-child(even):after{left:25%;transform:rotate(-20deg)}
-.map-level{
- width:68px;height:68px;border-radius:50%;
- border:4px solid #fff0b1;
- background:linear-gradient(145deg,#fff08b,#f59a3c);
- color:#48234e;font-size:23px;font-weight:1000;
- box-shadow:0 6px 0 #a64d3c,0 8px 16px #0006;
- position:relative
-}
+.map-level{width:68px;height:68px;border-radius:50%;border:4px solid #fff0b1;background:linear-gradient(145deg,#fff08b,#f59a3c);color:#48234e;font-size:23px;font-weight:1000;box-shadow:0 6px 0 #a64d3c,0 8px 16px #0006;position:relative}
 .map-level.done{background:linear-gradient(145deg,#b4ffda,#32c88b);border-color:#fff}
 .map-level.current{outline:4px solid white;outline-offset:4px;animation:pulse 1.3s infinite}
 .map-level.locked{background:linear-gradient(145deg,#55536c,#28243c);color:white;border-color:#999;box-shadow:0 5px 0 #171323}
@@ -97,8 +51,6 @@ body.light{color:#38224e;background:linear-gradient(#fff0f8,#d8eaff)!important}
 @keyframes pulse{50%{transform:scale(1.12);box-shadow:0 6px 0 #a64d3c,0 0 25px white}}
 .map-bottom{text-align:center;padding:18px;color:#fff}
 .map-bottom button{padding:12px 25px;border:1px solid #ffe36e;border-radius:14px;background:#ffffff20;color:white;font-weight:bold}
-
-/* GENERAL */
 .card{background:#ffffff18;border:1px solid #ffffff35;border-radius:18px;padding:14px;margin:12px auto;box-shadow:0 8px 22px #0003}
 .subtop{display:flex;align-items:center;justify-content:space-between;margin:12px 0 20px}
 .brand{font-size:13px;letter-spacing:2px;color:#ffe6a0;font-weight:bold}
@@ -111,17 +63,22 @@ body.light{color:#38224e;background:linear-gradient(#fff0f8,#d8eaff)!important}
 .toggle{min-width:72px;padding:9px;border:0;border-radius:12px;background:#555;color:white;font-weight:bold}
 .toggle.on{background:#35bd88;color:#073d2b}
 select{padding:10px;border-radius:10px}
-
-/* GAME */
 #game{padding-top:5px}
 .stats{display:flex;gap:7px;justify-content:space-around}
 .stat{flex:1;padding:10px 3px;border-radius:13px;background:#ffffff18}
 .stat small{display:block;font-size:11px;color:#e4d8ff}
 .stat strong{display:block;font-size:23px;color:var(--gold);margin-top:3px}
 #board{width:min(96vw,440px);aspect-ratio:1;margin:14px auto;display:grid;grid-template-columns:repeat(8,1fr);gap:4px;padding:7px;background:#100c28d9;border:2px solid #b69aff;border-radius:18px;touch-action:pan-y;user-select:none}
-.cell{min-width:0;aspect-ratio:1;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:clamp(18px,6vw,34px);background:linear-gradient(145deg,#ffffff30,#ffffff0c);box-shadow:inset 0 2px 4px #ffffff20,0 2px 3px #0005;touch-action:none}
+.cell{min-width:0;aspect-ratio:1;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:clamp(18px,6vw,34px);background:linear-gradient(145deg,#ffffff30,#ffffff0c);box-shadow:inset 0 2px 4px #ffffff20,0 2px 3px #0005;touch-action:none;position:relative;transition:transform .13s,filter .13s}
 .cell.selected{background:#ffe36e66;outline:3px solid #ffe36e;transform:scale(.9)}
 .cell.empty{visibility:hidden}
+.cell.special{filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 9px #ffdf4d);animation:specialPulse 1s infinite alternate}
+.cell.blast{animation:blast .32s ease-out}
+.cell.stripe:after{content:"";position:absolute;inset:12%;border-radius:6px;background:linear-gradient(90deg,transparent,#fff9,transparent);transform:rotate(-35deg);pointer-events:none}
+.cell.rainbow{background:conic-gradient(#ff4b4b,#ffe34c,#4cff9a,#42cfff,#b65cff,#ff4b4b)}
+.cell.bomb{background:radial-gradient(circle,#fff 0 12%,#ffed48 13% 28%,#ff702e 30% 58%,#7d1cff 75%)}
+@keyframes specialPulse{to{transform:scale(1.08);filter:drop-shadow(0 0 8px #fff) drop-shadow(0 0 15px #ff8c00)}}
+@keyframes blast{50%{transform:scale(1.35);filter:brightness(2) drop-shadow(0 0 12px #fff)}}
 .targetrow{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:10px}
 .targetitem{background:#160d35aa;padding:8px 12px;border-radius:12px;border:1px solid #ffffff30}
 .targetitem b{color:var(--gold)}
@@ -133,10 +90,11 @@ footer{text-align:center;font-size:11px;color:#e7d8ff;margin-top:18px}
 body.light #candyMap{background:linear-gradient(180deg,#ffc9e6,#d3c3ff,#a8e8ed,#b7efc8)}
 body.light .card{background:#ffffffaa;color:#35204f}
 body.light .secondary{color:#35204f;background:#ffffffaa}
+.legend{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;font-size:11px;margin:5px auto 8px;color:#fff4c2}
+.legend span{background:#160d3588;border-radius:9px;padding:5px 7px}
 </style>
 </head>
 <body class="world1">
-
 <section id="home" class="screen">
  <div class="game-topbar">
   <div class="top-stat">❤️ <b>5</b><small>Lives</small></div>
@@ -144,14 +102,8 @@ body.light .secondary{color:#35204f;background:#ffffffaa}
   <div class="top-stat">⭐ <b id="starCount">0</b><small>Stars</small></div>
   <button class="map-settings" onclick="showScreen('settings')">⚙️</button>
  </div>
- <div class="map-heading">
-  <div class="map-logo">🍬 CANDY BLAST 🍭</div>
-  <div class="map-subtitle">THE SWEET ADVENTURE</div>
- </div>
- <div class="progress-wrap">
-  <div class="progress-label"><span>🏆 YOUR PROGRESS</span><span id="progressText">0 / 20</span></div>
-  <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
- </div>
+ <div class="map-heading"><div class="map-logo">🍬 CANDY BLAST 🍭</div><div class="map-subtitle">THE SWEET ADVENTURE</div></div>
+ <div class="progress-wrap"><div class="progress-label"><span>🏆 YOUR PROGRESS</span><span id="progressText">0 / 20</span></div><div class="progress-track"><div id="progressBar" class="progress-fill"></div></div></div>
  <div id="candyMap">
   <div class="map-scenery scenery1">🏰 🍭 🌳 🍬</div>
   <div class="map-scenery scenery2">🍫 🏔️ 🍩 🌲</div>
@@ -160,18 +112,10 @@ body.light .secondary{color:#35204f;background:#ffffffaa}
   <div class="map-scenery scenery5">🏰 🍩 🌈 🍬</div>
   <div id="mapPath"></div>
  </div>
- <div class="map-bottom">
-  <button onclick="showScreen('settings')">⚙️ SETTINGS</button>
-  <footer>© SOHAN STUDIO • CANDY BLAST</footer>
- </div>
+ <div class="map-bottom"><button onclick="showScreen('settings')">⚙️ SETTINGS</button><footer>© SOHAN STUDIO • CANDY BLAST</footer></div>
 </section>
-
 <section id="settings" class="screen hidden">
- <div class="subtop">
-  <button class="iconbtn" onclick="showScreen('home')">←</button>
-  <span class="brand">GAME SETTINGS</span>
-  <span></span>
- </div>
+ <div class="subtop"><button class="iconbtn" onclick="showScreen('home')">←</button><span class="brand">GAME SETTINGS</span><span></span></div>
  <h2 style="text-align:center;color:#ffe36e">⚙️ Settings</h2>
  <div class="card">
   <div class="settingrow"><b>🎵 Music</b><button class="toggle" id="musicToggle" onclick="toggleSetting('music')">OFF</button></div>
@@ -182,13 +126,12 @@ body.light .secondary{color:#35204f;background:#ffffffaa}
  </div>
  <div class="card">
   <h3>❔ How to Play</h3>
-  <p>Swap two nearby candies. Match 3 or more identical candies to collect them. Complete the mission before your moves run out!</p>
+  <p>Swap two nearby candies. Match 3 or more candies. Match 4 for a Striped Candy, 5 in a line for Rainbow, or make a T/L shape for a Bomb!</p>
   <h3>🍬 About</h3>
   <p>Candy Blast is a sweet puzzle adventure made by SOHAN STUDIO.</p>
  </div>
  <button class="secondary wide" onclick="showScreen('home')">BACK TO WORLD MAP</button>
 </section>
-
 <section id="game" class="screen hidden">
  <div class="subtop">
   <button class="iconbtn" onclick="askExit()">←</button>
@@ -205,6 +148,7 @@ body.light .secondary{color:#35204f;background:#ffffffaa}
   <div id="mission">Mission</div>
   <div id="targets" class="targetrow"></div>
  </div>
+ <div class="legend"><span>⚡ Striped</span><span>💣 Bomb</span><span>🌈 Rainbow</span></div>
  <div id="board"></div>
  <div id="message">Match 3 or more candies!</div>
  <div style="text-align:center">
@@ -212,7 +156,6 @@ body.light .secondary{color:#35204f;background:#ffffffaa}
   <button class="secondary" onclick="askExit()">🗺️ World Map</button>
  </div>
 </section>
-
 <div id="overlay">
  <div class="dialog">
   <h2 id="resultTitle">LEVEL COMPLETE!</h2>
@@ -222,7 +165,6 @@ body.light .secondary{color:#35204f;background:#ffffffaa}
   <br><button class="secondary wide" onclick="showScreen('home')">WORLD MAP</button>
  </div>
 </div>
-
 <script>
 "use strict";
 const N=8,sweets=["🍬","🍭","🍫","🍩","🍪","🧁"];
@@ -249,220 +191,50 @@ const levels=[
 {name:"Candy Blast Finale",world:5,moves:32,mission:"Collect five kinds of sweets",goals:[[0,12],[1,12],[2,12],[3,12],[5,12]]}
 ];
 const worldNames=["🍬 CANDY GARDEN","🍫 CHOCOLATE WORLD","🏝️ LOLLIPOP ISLAND","🧁 CUPCAKE CITY","🍩 DONUT VALLEY"];
-let unlocked=1,completed=[],starScores={},currentLevel=1;
-let board=[],score=0,moves=20,progress=[],selected=null,busy=false,ended=false;
-let soundOn=true,musicOn=false,vibrationOn=false,language="en",theme="dark";
-let audioCtx=null,musicTimer=null,musicStep=0,touchStart=null,suppressClick=false;
-const $=id=>document.getElementById(id);
-const wait=ms=>new Promise(r=>setTimeout(r,ms));
-function cfg(){return levels[currentLevel-1]}
-function rand(){return Math.floor(Math.random()*sweets.length)}
-
-function loadSave(){
- try{
-  const s=JSON.parse(localStorage.getItem("candyBlastSave")||"{}");
-  unlocked=Math.max(1,Math.min(20,Number(s.unlocked)||1));
-  completed=Array.isArray(s.completed)?s.completed.filter(x=>Number.isInteger(x)&&x>=1&&x<=20):[];
-  starScores=s.starScores||{};
-  soundOn=s.sound!==false;musicOn=s.music===true;vibrationOn=s.vibration===true;
-  language=s.language==="hi"?"hi":"en";theme=s.theme==="light"?"light":"dark";
- }catch(e){}
-}
-function save(){
- try{localStorage.setItem("candyBlastSave",JSON.stringify({unlocked,completed,starScores,sound:soundOn,music:musicOn,vibration:vibrationOn,language,theme}))}catch(e){}
-}
-function showScreen(id){
- document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden"));
- $(id).classList.remove("hidden");
- $("overlay").style.display="none";
- if(id==="home")renderHome();
- if(id==="settings")renderSettings();
- if(id==="game"&&musicOn)startMusic();
-}
-function renderHome(){
- $("starCount").textContent=Object.values(starScores).reduce((a,b)=>a+b,0);
- $("progressText").textContent=completed.length+" / 20";
- $("progressBar").style.width=(completed.length/20*100)+"%";
- const path=$("mapPath");let html="";
- for(let i=1;i<=20;i++){
-  const world=Math.floor((i-1)/4);
-  const locked=i>unlocked,done=completed.includes(i),current=i===unlocked;
-  if((i-1)%4===0)html+=`<div class="world-label">${worldNames[world]}</div>`;
-  const stars=starScores[i]||0;
-  html+=`<div class="level-row">
-   <button class="map-level ${locked?"locked":""} ${done?"done":""} ${current&&!done?"current":""}"
-   ${locked?"disabled":""} onclick="launchLevel(${i})">
-   ${locked?"🔒":done?"✓":i}
-   ${done?`<span class="star-mark">${"⭐".repeat(stars)}</span>`:""}
-   </button></div>`;
- }
- path.innerHTML=html;
-}
-function renderSettings(){
- for(const [id,v] of [["musicToggle",musicOn],["soundToggle",soundOn],["vibrationToggle",vibrationOn]]){
-  $(id).textContent=v?"ON":"OFF";$(id).classList.toggle("on",v);
- }
- $("languageSelect").value=language;$("themeSelect").value=theme;
-}
-function toggleSetting(k){
- if(k==="music"){musicOn=!musicOn;if(musicOn)startMusic();else stopMusic()}
- if(k==="sound")soundOn=!soundOn;
- if(k==="vibration")vibrationOn=!vibrationOn;
- save();renderSettings();
-}
+let unlocked=1,completed=[],starScores={},currentLevel=1,board=[],score=0,moves=20,progress=[],selected=null,busy=false,ended=false;
+let soundOn=true,musicOn=false,vibrationOn=false,language="en",theme="dark",audioCtx=null,musicTimer=null,musicStep=0,touchStart=null,suppressClick=false;
+const $=id=>document.getElementById(id),wait=ms=>new Promise(r=>setTimeout(r,ms)),cfg=()=>levels[currentLevel-1],rand=()=>Math.floor(Math.random()*sweets.length);
+function loadSave(){try{const s=JSON.parse(localStorage.getItem("candyBlastSave")||"{}");unlocked=Math.max(1,Math.min(20,Number(s.unlocked)||1));completed=Array.isArray(s.completed)?s.completed.filter(x=>Number.isInteger(x)&&x>=1&&x<=20):[];starScores=s.starScores||{};soundOn=s.sound!==false;musicOn=s.music===true;vibrationOn=s.vibration===true;language=s.language==="hi"?"hi":"en";theme=s.theme==="light"?"light":"dark"}catch(e){}}
+function save(){try{localStorage.setItem("candyBlastSave",JSON.stringify({unlocked,completed,starScores,sound:soundOn,music:musicOn,vibration:vibrationOn,language,theme}))}catch(e){}}
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden"));$(id).classList.remove("hidden");$("overlay").style.display="none";if(id==="home")renderHome();if(id==="settings")renderSettings();if(id==="game"&&musicOn)startMusic()}
+function renderHome(){$("starCount").textContent=Object.values(starScores).reduce((a,b)=>a+b,0);$("progressText").textContent=completed.length+" / 20";$("progressBar").style.width=(completed.length/20*100)+"%";let html="";for(let i=1;i<=20;i++){const w=Math.floor((i-1)/4),locked=i>unlocked,done=completed.includes(i),current=i===unlocked;if((i-1)%4===0)html+=`<div class="world-label">${worldNames[w]}</div>`;html+=`<div class="level-row"><button class="map-level ${locked?"locked":""} ${done?"done":""} ${current&&!done?"current":""}" ${locked?"disabled":""} onclick="launchLevel(${i})">${locked?"🔒":done?"✓":i}${done?`<span class="star-mark">${"⭐".repeat(starScores[i]||0)}</span>`:""}</button></div>`}$("mapPath").innerHTML=html}
+function renderSettings(){for(const [id,v] of [["musicToggle",musicOn],["soundToggle",soundOn],["vibrationToggle",vibrationOn]]){$(id).textContent=v?"ON":"OFF";$(id).classList.toggle("on",v)}$("languageSelect").value=language;$("themeSelect").value=theme}
+function toggleSetting(k){if(k==="music"){musicOn=!musicOn;if(musicOn)startMusic();else stopMusic()}if(k==="sound")soundOn=!soundOn;if(k==="vibration")vibrationOn=!vibrationOn;save();renderSettings()}
 function changeLanguage(v){language=v;save()}
 function changeTheme(v){theme=v;applyTheme();save()}
 function applyTheme(){document.body.classList.toggle("light",theme==="light")}
-
-/* Original generated game melody */
-function startMusic(){
- if(!musicOn)return;
- try{
-  audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
-  audioCtx.resume();if(musicTimer)clearInterval(musicTimer);
-  const notes=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,1046.5,880,783.99,659.25,587.33];
-  musicStep=0;
-  function note(){
-   if(!musicOn||!audioCtx)return;
-   const o=audioCtx.createOscillator(),g=audioCtx.createGain();
-   o.type="sine";o.frequency.value=notes[musicStep++%notes.length];
-   g.gain.setValueAtTime(.0001,audioCtx.currentTime);
-   g.gain.exponentialRampToValueAtTime(.035,audioCtx.currentTime+.04);
-   g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.32);
-   o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.34);
-  }
-  note();musicTimer=setInterval(note,360);
- }catch(e){}
-}
+function startMusic(){if(!musicOn)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();audioCtx.resume();if(musicTimer)clearInterval(musicTimer);const notes=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,1046.5,880,783.99,659.25,587.33];musicStep=0;function note(){if(!musicOn||!audioCtx)return;const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type="sine";o.frequency.value=notes[musicStep++%notes.length];g.gain.setValueAtTime(.0001,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.035,audioCtx.currentTime+.04);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+.32);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.34)}note();musicTimer=setInterval(note,360)}catch(e){}}
 function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}}
-function playSound(){
- if(!soundOn)return;
- try{
-  audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
-  if(audioCtx.state==="suspended")audioCtx.resume();
-  const o=audioCtx.createOscillator(),g=audioCtx.createGain();
-  o.connect(g);g.connect(audioCtx.destination);o.frequency.value=620;g.gain.value=.04;o.start();o.stop(audioCtx.currentTime+.1);
- }catch(e){}
-}
-function vibrate(){if(vibrationOn&&navigator.vibrate)navigator.vibrate(35)}
-
-function launchLevel(n){
- if(n>unlocked)return;
- currentLevel=n;selected=null;startLevel();showScreen("game");
-}
-function startLevel(){
- const l=cfg();document.body.className="world"+l.world;applyTheme();
- if(musicOn)startMusic();
- moves=l.moves;score=0;selected=null;busy=false;ended=false;
- progress=l.goals.map(()=>0);makeBoard();renderBoard();
- $("overlay").style.display="none";$("message").textContent="Match 3 or more candies!";
-}
+function tone(freq=620,duration=.12,type="sine"){if(!soundOn)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.0001,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.07,audioCtx.currentTime+.015);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration)}catch(e){}}
+function playSound(){tone(620,.1)}
+function vibrate(){if(vibrationOn&&navigator.vibrate)navigator.vibrate(45)}
+function launchLevel(n){if(n>unlocked)return;currentLevel=n;selected=null;startLevel();showScreen("game")}
+function startLevel(){const l=cfg();document.body.className="world"+l.world;applyTheme();if(musicOn)startMusic();moves=l.moves;score=0;selected=null;busy=false;ended=false;progress=l.goals.map(()=>0);makeBoard();renderBoard();$("overlay").style.display="none";$("message").textContent="Match 3 or more candies!"}
 function restartLevel(){startLevel()}
 function nextLevel(){if(currentLevel<20)launchLevel(currentLevel+1);else showScreen("home")}
 function askExit(){if(!busy)showScreen("home")}
-
-function makeBoard(){
- board=Array.from({length:N},()=>Array(N).fill(-1));
- for(let r=0;r<N;r++)for(let c=0;c<N;c++){
-  let v;do{v=rand()}while((c>=2&&board[r][c-1]===v&&board[r][c-2]===v)||(r>=2&&board[r-1][c]===v&&board[r-2][c]===v));
-  board[r][c]=v;
- }
-}
-function renderBoard(){
- const l=cfg();$("gameLevel").textContent=currentLevel;$("moves").textContent=moves;$("score").textContent=score;
- $("levelName").textContent=l.name;$("mission").textContent="Mission: "+l.mission;
- $("targets").innerHTML=l.goals.map((g,i)=>`<div class="targetitem">${sweets[g[0]]} <b>${Math.min(progress[i],g[1])}/${g[1]}</b></div>`).join("");
- const el=$("board");el.innerHTML="";
- for(let r=0;r<N;r++)for(let c=0;c<N;c++){
-  const cell=document.createElement("div");cell.className="cell"+(board[r][c]<0?" empty":"");
-  cell.textContent=board[r][c]<0?"":sweets[board[r][c]];
-  if(selected&&selected.r===r&&selected.c===c)cell.classList.add("selected");
-  cell.dataset.r=r;cell.dataset.c=c;el.appendChild(cell);
- }
-}
-function matches(){
- const found=new Set();
- for(let r=0;r<N;r++){let c=0;while(c<N){let end=c+1;while(end<N&&board[r][c]>=0&&board[r][end]===board[r][c])end++;if(board[r][c]>=0&&end-c>=3)for(let x=c;x<end;x++)found.add(r+","+x);c=end}}
- for(let c=0;c<N;c++){let r=0;while(r<N){let end=r+1;while(end<N&&board[r][c]>=0&&board[end][c]===board[r][c])end++;if(board[r][c]>=0&&end-r>=3)for(let x=r;x<end;x++)found.add(x+","+c);r=end}}
- return [...found].map(s=>s.split(",").map(Number));
-}
+function makeBoard(){board=Array.from({length:N},()=>Array(N).fill(null));for(let r=0;r<N;r++)for(let c=0;c<N;c++){let v;do{v={type:rand(),special:null}}while((c>=2&&board[r][c-1].type===v.type&&board[r][c-2].type===v.type)||(r>=2&&board[r-1][c].type===v.type&&board[r-2][c].type===v.type));board[r][c]=v}}
+function candyAt(r,c){return r>=0&&r<N&&c>=0&&c<N?board[r][c]:null}
+function renderBoard(){const l=cfg();$("gameLevel").textContent=currentLevel;$("moves").textContent=moves;$("score").textContent=score;$("levelName").textContent=l.name;$("mission").textContent="Mission: "+l.mission;$("targets").innerHTML=l.goals.map((g,i)=>`<div class="targetitem">${sweets[g[0]]} <b>${Math.min(progress[i],g[1])}/${g[1]}</b></div>`).join("");const el=$("board");el.innerHTML="";for(let r=0;r<N;r++)for(let c=0;c<N;c++){const v=board[r][c],cell=document.createElement("div");cell.className="cell"+(!v?" empty":"");if(v){cell.textContent=v.special==="stripe"?"⚡":v.special==="bomb"?"💣":v.special==="rainbow"?"🌈":sweets[v.type];if(v.special)cell.classList.add("special",v.special);if(v.special==="stripe")cell.classList.add("stripe")}if(selected&&selected.r===r&&selected.c===c)cell.classList.add("selected");cell.dataset.r=r;cell.dataset.c=c;el.appendChild(cell)}}
 function swap(a,b){const t=board[a.r][a.c];board[a.r][a.c]=board[b.r][b.c];board[b.r][b.c]=t}
 function adjacent(a,b){return Math.abs(a.r-b.r)+Math.abs(a.c-b.c)===1}
-async function clearMatches(){
- while(true){
-  const found=matches();if(!found.length)break;
-  const counts=Array(sweets.length).fill(0);
-  found.forEach(([r,c])=>counts[board[r][c]]++);
-  cfg().goals.forEach((g,i)=>progress[i]+=counts[g[0]]);
-  score+=found.length*10;found.forEach(([r,c])=>board[r][c]=-1);
-  playSound();vibrate();renderBoard();await wait(150);
-  for(let c=0;c<N;c++){
-   let write=N-1;
-   for(let r=N-1;r>=0;r--)if(board[r][c]>=0){board[write][c]=board[r][c];if(write!==r)board[r][c]=-1;write--}
-   for(let r=write;r>=0;r--)board[r][c]=rand();
-  }
-  renderBoard();await wait(130);
- }
-}
+function scanRuns(){const runs=[];for(let r=0;r<N;r++){let c=0;while(c<N){const v=candyAt(r,c);if(!v){c++;continue}let e=c+1;while(e<N&&candyAt(r,e)&&candyAt(r,e).type===v.type)e++;if(e-c>=3)runs.push({cells:Array.from({length:e-c},(_,i)=>[r,c+i]),dir:"h",len:e-c,type:v.type});c=e}}for(let c=0;c<N;c++){let r=0;while(r<N){const v=candyAt(r,c);if(!v){r++;continue}let e=r+1;while(e<N&&candyAt(e,c)&&candyAt(e,c).type===v.type)e++;if(e-r>=3)runs.push({cells:Array.from({length:e-r},(_,i)=>[r+i,c]),dir:"v",len:e-r,type:v.type});r=e}}return runs}
+function getMatches(){const set=new Set();scanRuns().forEach(run=>run.cells.forEach(([r,c])=>set.add(r+","+c)));return [...set].map(s=>s.split(",").map(Number))}
+function chooseSpecial(runs,preferred){const all=new Set();runs.forEach(x=>x.cells.forEach(([r,c])=>all.add(r+","+c)));if(!all.size)return null;const cells=[...all].map(s=>s.split(",").map(Number));const counts=new Map();cells.forEach(([r,c])=>{const k=r+","+c;counts.set(k,(counts.get(k)||0)+1)});let pivot=preferred&&all.has(preferred.r+","+preferred.c)?[preferred.r,preferred.c]:cells[0];const cross=cells.some(([r,c])=>counts.get(r+","+c)>1);const longest=Math.max(...runs.map(x=>x.len));let special=null;if(cross)special="bomb";else if(longest>=5)special="rainbow";else if(longest===4){const run=runs.find(x=>x.len===4);special="stripe";pivot=preferred&&run.cells.some(([r,c])=>r===preferred.r&&c===preferred.c)?[preferred.r,preferred.c]:run.cells[1]}return special?{r:pivot[0],c:pivot[1],special}:null}
+async function clearCycle(runs,preferred){let matchCells=getMatches();if(!matchCells.length)return false;const made=chooseSpecial(runs,preferred);let clearSet=new Set(matchCells.map(([r,c])=>r+","+c));if(made){clearSet.delete(made.r+","+made.c);board[made.r][made.c].special=made.special;board[made.r][made.c].targetType=null}
+ let changed=true;while(changed){changed=false;for(const key of [...clearSet]){const [r,c]=key.split(",").map(Number),v=candyAt(r,c);if(!v||!v.special)continue;const before=clearSet.size;if(v.special==="stripe"){for(let i=0;i<N;i++){clearSet.add(r+","+i);clearSet.add(i+","+c)}tone(880,.2,"triangle")}else if(v.special==="bomb"){for(let y=Math.max(0,r-1);y<=Math.min(N-1,r+1);y++)for(let x=Math.max(0,c-1);x<=Math.min(N-1,c+1);x++)clearSet.add(y+","+x);tone(120,.35,"sawtooth")}else if(v.special==="rainbow"){const target=v.targetType;if(target==null){const nearby=[candyAt(r-1,c),candyAt(r+1,c),candyAt(r,c-1),candyAt(r,c+1)].find(x=>x&&!x.special);if(nearby)v.targetType=nearby.type}const color=v.targetType;for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(candyAt(y,x)&&(color==null||candyAt(y,x).type===color))clearSet.add(y+","+x);tone(1046,.4,"sine")}if(clearSet.size>before)changed=true}}
+ const counts=Array(sweets.length).fill(0);clearSet.forEach(key=>{const [r,c]=key.split(",").map(Number),v=candyAt(r,c);if(v){counts[v.type]++;const cell=$("board").children[r*N+c];if(cell)cell.classList.add("blast")}});cfg().goals.forEach((g,i)=>progress[i]+=counts[g[0]]);score+=clearSet.size*10+(made?50:0);playSound();vibrate();$("message").textContent=made?(made.special==="stripe"?"⚡ STRIPED CANDY CREATED!":made.special==="bomb"?"💣 NEON BOMB CREATED!":"🌈 RAINBOW CANDY CREATED!"):"BOOM! SWEET COMBO!";await wait(260);clearSet.forEach(key=>{const [r,c]=key.split(",").map(Number);if(!(made&&r===made.r&&c===made.c))board[r][c]=null});renderBoard();await wait(100);for(let c=0;c<N;c++){let write=N-1;for(let r=N-1;r>=0;r--)if(board[r][c]){board[write][c]=board[r][c];if(write!==r)board[r][c]=null;write--}for(let r=write;r>=0;r--)board[r][c]={type:rand(),special:null}}renderBoard();await wait(130);return true}
+async function clearMatches(preferred){let first=true;while(true){const runs=scanRuns();if(!runs.length)break;await clearCycle(runs,first?preferred:null);first=false;if(missionComplete())break}}
 function missionComplete(){return cfg().goals.every((g,i)=>progress[i]>=g[1])}
-async function choose(r,c){
- if(busy||ended)return;
- const here={r,c};
- if(!selected){selected=here;renderBoard();return}
- if(selected.r===r&&selected.c===c){selected=null;renderBoard();return}
- if(!adjacent(selected,here)){selected=here;renderBoard();return}
- const old=selected;selected=null;busy=true;swap(old,here);renderBoard();await wait(90);
- if(!matches().length){swap(old,here);renderBoard();$("message").textContent="No match! Try another move."}
- else{
-  moves--;$("message").textContent="Sweet! Great match!";
-  await clearMatches();
-  if(missionComplete())finish(true);else if(moves<=0)finish(false);
-  else $("message").textContent="Keep going! Complete your mission.";
- }
- busy=false;
-}
-function finish(won){
- ended=true;
- if(won){
-  const stars=score>=1000?3:score>=600?2:1;
-  if(!completed.includes(currentLevel))completed.push(currentLevel);
-  starScores[currentLevel]=Math.max(starScores[currentLevel]||0,stars);
-  unlocked=Math.max(unlocked,Math.min(20,currentLevel+1));save();
-  $("earnedStars").textContent="⭐".repeat(stars);
-  $("resultTitle").textContent=currentLevel===20?"🏆 CANDY CHAMPION!":"🎉 LEVEL COMPLETE!";
-  $("resultText").textContent="Amazing! You completed "+cfg().name+". Score: "+score;
-  $("nextBtn").style.display="inline-block";
- }else{
-  $("earnedStars").textContent="";$("resultTitle").textContent="😢 TRY AGAIN";
-  $("resultText").textContent="Moves are over. Try this level again!";
-  $("nextBtn").style.display="none";
- }
- $("overlay").style.display="flex";
-}
-
-/* TOUCH AND CLICK */
+async function clearDirect(initial){let set=new Set(initial.map(([r,c])=>r+","+c)),processed=new Set();let queue=[...set];while(queue.length){const k=queue.shift();if(processed.has(k))continue;processed.add(k);const [r,c]=k.split(",").map(Number),v=candyAt(r,c);if(!v?.special)continue;if(v.special==="stripe"){for(let i=0;i<N;i++){set.add(r+","+i);set.add(i+","+c)}}else if(v.special==="bomb"){for(let y=Math.max(0,r-1);y<=Math.min(N-1,r+1);y++)for(let x=Math.max(0,c-1);x<=Math.min(N-1,c+1);x++)set.add(y+","+x)}else{const color=v.targetType;for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(color==null||candyAt(y,x)?.type===color)set.add(y+","+x)}for(const next of set)if(!processed.has(next))queue.push(next)}
+ const counts=Array(6).fill(0);for(const k of set){const [r,c]=k.split(",").map(Number),v=candyAt(r,c);if(v){counts[v.type]++;const el=$("board").children[r*N+c];if(el)el.classList.add("blast")}}cfg().goals.forEach((g,i)=>progress[i]+=counts[g[0]]);score+=set.size*10;tone(180,.35,"sawtooth");vibrate();await wait(260);set.forEach(k=>{const [r,c]=k.split(",").map(Number);board[r][c]=null});for(let c=0;c<N;c++){let w=N-1;for(let r=N-1;r>=0;r--)if(board[r][c]){board[w][c]=board[r][c];if(w!==r)board[r][c]=null;w--}for(let r=w;r>=0;r--)board[r][c]={type:rand(),special:null}}renderBoard()}
+async function choose(r,c){if(busy||ended)return;const here={r,c};if(!selected){selected=here;renderBoard();return}if(selected.r===r&&selected.c===c){selected=null;renderBoard();return}if(!adjacent(selected,here)){selected=here;renderBoard();return}const old=selected;selected=null;busy=true;const a=candyAt(old.r,old.c),b=candyAt(r,c),specialSwap=!!(a?.special||b?.special);swap(old,here);renderBoard();await wait(90);if(!scanRuns().length&&!specialSwap){swap(old,here);renderBoard();$("message").textContent="No match! Try another move."}else{moves--;if(specialSwap){const pref=[old,here].find(p=>candyAt(p.r,p.c)?.special);if(pref){const v=candyAt(pref.r,pref.c);if(v.special==="rainbow"){const other=pref.r===old.r&&pref.c===old.c?here:old,target=candyAt(other.r,other.c);if(target){v.targetType=target.type;for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(candyAt(y,x)?.type===target.type)board[y][x].marked=true}}}const initial=[];for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(board[y][x]?.marked){initial.push([y,x]);board[y][x].marked=false}if(pref)initial.push([pref.r,pref.c]);await clearDirect(initial)}await clearMatches({r:here.r,c:here.c});if(missionComplete())finish(true);else if(moves<=0)finish(false);else $("message").textContent="Keep going! Complete your mission."}busy=false;renderBoard()}
+function finish(won){ended=true;if(won){const stars=score>=1000?3:score>=600?2:1;if(!completed.includes(currentLevel))completed.push(currentLevel);starScores[currentLevel]=Math.max(starScores[currentLevel]||0,stars);unlocked=Math.max(unlocked,Math.min(20,currentLevel+1));save();$("earnedStars").textContent="⭐".repeat(stars);$("resultTitle").textContent=currentLevel===20?"🏆 CANDY CHAMPION!":"🎉 LEVEL COMPLETE!";$("resultText").textContent="Amazing! You completed "+cfg().name+". Score: "+score;$("nextBtn").style.display="inline-block"}else{$("earnedStars").textContent="";$("resultTitle").textContent="😢 TRY AGAIN";$("resultText").textContent="Moves are over. Try this level again!";$("nextBtn").style.display="none"}$("overlay").style.display="flex"}
 const boardEl=$("board");
-boardEl.addEventListener("click",e=>{
- const cell=e.target.closest(".cell");if(!cell)return;
- if(suppressClick){suppressClick=false;return}
- choose(+cell.dataset.r,+cell.dataset.c);
-});
-boardEl.addEventListener("pointerdown",e=>{
- const cell=e.target.closest(".cell");if(!cell||busy||ended)return;
- touchStart={r:+cell.dataset.r,c:+cell.dataset.c,x:e.clientX,y:e.clientY};
-});
-boardEl.addEventListener("pointerup",e=>{
- if(!touchStart)return;
- const s=touchStart;touchStart=null;
- const dx=e.clientX-s.x,dy=e.clientY-s.y;
- if(Math.max(Math.abs(dx),Math.abs(dy))<18)return;
- let r=s.r,c=s.c;
- if(Math.abs(dx)>Math.abs(dy))c+=dx>0?1:-1;else r+=dy>0?1:-1;
- if(r<0||r>=N||c<0||c>=N)return;
- suppressClick=true;selected={r:s.r,c:s.c};choose(r,c);
-});
+boardEl.addEventListener("click",e=>{const cell=e.target.closest(".cell");if(!cell)return;if(suppressClick){suppressClick=false;return}choose(+cell.dataset.r,+cell.dataset.c)});
+boardEl.addEventListener("pointerdown",e=>{const cell=e.target.closest(".cell");if(!cell||busy||ended)return;touchStart={r:+cell.dataset.r,c:+cell.dataset.c,x:e.clientX,y:e.clientY}});
+boardEl.addEventListener("pointerup",e=>{if(!touchStart)return;const s=touchStart;touchStart=null;const dx=e.clientX-s.x,dy=e.clientY-s.y;if(Math.max(Math.abs(dx),Math.abs(dy))<18)return;let r=s.r,c=s.c;if(Math.abs(dx)>Math.abs(dy))c+=dx>0?1:-1;else r+=dy>0?1:-1;if(r<0||r>=N||c<0||c>=N)return;suppressClick=true;selected={r:s.r,c:s.c};choose(r,c)});
 boardEl.addEventListener("pointercancel",()=>touchStart=null);
-
 loadSave();applyTheme();renderSettings();renderHome();showScreen("home");
 </script>
 </body>
