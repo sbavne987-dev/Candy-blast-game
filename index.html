@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>Candy Blast - Sohan Studio</title>
+<meta name="theme-color" content="#21113e">
+<title>Candy Blast | Sohan Studio</title>
 <style>
 *{box-sizing:border-box}
+:root{--gold:#ffe36e;--pink:#ff78c8;--panel:#ffffff18;--border:#ffffff35}
 body{
- margin:0;min-height:100vh;padding:16px 10px 30px;
+ margin:0;min-height:100vh;padding:15px 12px 30px;
  font-family:Arial,sans-serif;color:white;text-align:center;
- background:linear-gradient(145deg,#45217c,#17102f 65%,#090817);
+ background:linear-gradient(145deg,#7139a8,#24104e 65%,#090817);
  transition:background .5s
 }
 body.world1{background:linear-gradient(145deg,#7139a8,#24104e 65%,#090817)}
@@ -17,23 +19,80 @@ body.world2{background:linear-gradient(145deg,#8b482d,#38192c 65%,#100817)}
 body.world3{background:linear-gradient(145deg,#176a9b,#22245f 65%,#090817)}
 body.world4{background:linear-gradient(145deg,#b64e9c,#54266e 65%,#100817)}
 body.world5{background:linear-gradient(145deg,#287c62,#173b50 65%,#090817)}
-h1{font-size:clamp(27px,7vw,42px);margin:8px 0;color:#ffe36e;text-shadow:0 3px 15px #ff4ca6}
-.subtitle{color:#e5d8ff;margin:5px 0 18px;font-size:16px}
-.panel{max-width:460px;margin:12px auto;padding:13px;background:#ffffff19;border:1px solid #ffffff38;border-radius:20px;box-shadow:0 8px 25px #0005}
-.stats{display:flex;justify-content:space-around;gap:7px}
-.stat{flex:1;background:#ffffff17;border-radius:13px;padding:9px 3px}
-.stat small{display:block;color:#e0d5ff;font-size:11px}
-.stat strong{font-size:clamp(19px,5vw,25px);color:#ffe36e}
-#levelName{font-size:19px;color:#fff;margin:12px 0 5px;font-weight:bold}
-#mission{font-size:14px;color:#fff0a7;line-height:1.5}
-#targets{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:10px}
-.target{background:#160d35a8;border:1px solid #ffffff35;border-radius:12px;padding:7px 12px;font-size:14px}
-.target b{color:#ffe36e;font-size:17px}
+body.light{
+ color:#35204f;
+ background:linear-gradient(145deg,#fff0fc,#d9eaff)!important
+}
+button{font-family:inherit;cursor:pointer}
+button:active{transform:scale(.96)}
+.hidden{display:none!important}
+.screen{max-width:520px;margin:auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:5px 0 16px}
+.brand{font-size:13px;letter-spacing:2px;font-weight:bold;color:#ffe6a0}
+.iconbtn{
+ width:43px;height:43px;border-radius:14px;border:1px solid var(--border);
+ color:white;background:#ffffff20;font-size:21px
+}
+.logo{padding:25px 8px 18px}
+.logo h1{
+ margin:0;font-size:clamp(38px,10vw,57px);font-weight:1000;
+ letter-spacing:-2px;color:var(--gold);
+ text-shadow:0 4px 0 #9e4c99,0 8px 22px #ff54bc
+}
+.logo .candyline{font-size:43px;margin:8px}
+.logo p{color:#eee0ff;font-size:16px}
+.hero{
+ margin:14px auto 20px;padding:22px 12px;
+ border:1px solid #ffffff40;border-radius:25px;
+ background:linear-gradient(140deg,#ffffff20,#ffffff08);
+ box-shadow:0 12px 30px #0004
+}
+.heroart{font-size:clamp(42px,13vw,65px);line-height:1.45}
+.primary,.secondary{
+ border:0;border-radius:16px;padding:15px 25px;
+ font-size:17px;font-weight:900;margin:7px 4px;
+}
+.primary{color:#38204c;background:linear-gradient(135deg,#fff080,#ffae48);box-shadow:0 5px 0 #b96a37}
+.secondary{color:white;background:#ffffff20;border:1px solid #ffffff45}
+.wide{width:min(100%,320px)}
+.smallnote{font-size:12px;color:#e3d5ff;margin-top:17px}
+.card{
+ background:var(--panel);border:1px solid var(--border);
+ border-radius:20px;padding:16px;margin:12px auto;
+ box-shadow:0 8px 22px #0003
+}
+h2{color:var(--gold);margin:8px 0 16px}
+.sectiontitle{font-size:23px;color:var(--gold);font-weight:bold;margin:12px}
+.mapworld{
+ padding:15px;border-radius:18px;margin:12px 0;
+ background:#ffffff14;border:1px solid #ffffff30
+}
+.worldtitle{font-size:18px;font-weight:bold;color:#ffe9a6}
+.worldsubtitle{font-size:12px;color:#e6d9ff;margin:5px}
+.levelgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:14px}
+.levelbtn{
+ aspect-ratio:1;border:2px solid #ffffff55;border-radius:50%;
+ background:linear-gradient(145deg,#ffe878,#f5a342);
+ color:#3d2050;font-size:17px;font-weight:900;
+ box-shadow:0 4px 0 #8d4b43;position:relative
+}
+.levelbtn.locked{background:#39324c;color:#aaa;border-color:#777;box-shadow:0 4px 0 #211a31}
+.levelbtn.done{background:linear-gradient(145deg,#8ff5bb,#32b985);color:#104b3b}
+.levelbtn.current{outline:3px solid white;outline-offset:3px;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{transform:scale(1.07)}}
+#levelPreview{margin-top:15px}
+.targetrow{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:10px}
+.targetitem{background:#160d35aa;padding:8px 12px;border-radius:12px;border:1px solid #ffffff30}
+.targetitem b{color:var(--gold)}
+.stats{display:flex;gap:7px;justify-content:space-around}
+.stat{flex:1;padding:10px 3px;border-radius:13px;background:#ffffff18}
+.stat small{display:block;font-size:11px;color:#e4d8ff}
+.stat strong{display:block;font-size:23px;color:var(--gold);margin-top:3px}
 #board{
- width:min(96vw,440px);aspect-ratio:1;margin:15px auto;
+ width:min(96vw,440px);aspect-ratio:1;margin:14px auto;
  display:grid;grid-template-columns:repeat(8,1fr);gap:4px;
  padding:7px;background:#100c28c9;border:2px solid #b69aff;
- border-radius:18px;touch-action:pan-y;user-select:none;
+ border-radius:18px;touch-action:none;user-select:none;
  box-shadow:0 10px 30px #0006
 }
 .cell{
@@ -41,88 +100,289 @@ h1{font-size:clamp(27px,7vw,42px);margin:8px 0;color:#ffe36e;text-shadow:0 3px 1
  display:flex;align-items:center;justify-content:center;
  font-size:clamp(18px,6vw,34px);
  background:linear-gradient(145deg,#ffffff30,#ffffff0c);
- box-shadow:inset 0 2px 4px #ffffff20,0 2px 3px #0005;
- cursor:pointer;transition:transform .12s
+ box-shadow:inset 0 2px 4px #ffffff20,0 2px 3px #0005
 }
 .cell.selected{background:#ffe36e66;outline:3px solid #ffe36e;transform:scale(.9)}
 .cell.empty{visibility:hidden}
-#message{min-height:27px;color:#ffe875;font-weight:bold;margin:8px}
-button{border:0;border-radius:14px;padding:13px 20px;font-size:15px;font-weight:bold;color:#271443;background:linear-gradient(135deg,#ffe875,#ffae50);cursor:pointer;margin:5px}
-button:active{transform:scale(.96)}
-#overlay{display:none;position:fixed;inset:0;background:#08051deF;align-items:center;justify-content:center;padding:20px;z-index:5}
-.dialog{background:linear-gradient(145deg,#57358a,#251548);border:2px solid #ffe36e;border-radius:23px;padding:25px;max-width:340px;width:100%;box-shadow:0 15px 50px #0009}
-.dialog h2{color:#ffe36e;font-size:28px}
-.dialog p{line-height:1.5;color:#f4eaff}
-footer{font-size:12px;color:#b9addd;margin-top:22px}
+#message{min-height:25px;color:#ffe875;font-weight:bold;margin:8px}
+.settingrow{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:10px;padding:13px 4px;border-bottom:1px solid #ffffff20;text-align:left
+}
+.settingrow:last-child{border:0}
+.settingrow span{font-weight:bold}
+.toggle{
+ min-width:74px;padding:9px;border:0;border-radius:12px;
+ background:#555;color:white;font-weight:bold
+}
+.toggle.on{background:#35bd88;color:#073d2b}
+select{
+ padding:10px;border-radius:10px;border:1px solid #aaa;
+ background:#fff;color:#29203c;font-weight:bold
+}
+#overlay{
+ display:none;position:fixed;inset:0;background:#08051deF;
+ align-items:center;justify-content:center;padding:20px;z-index:10
+}
+.dialog{
+ background:linear-gradient(145deg,#57358a,#251548);
+ border:2px solid var(--gold);border-radius:23px;padding:25px;
+ max-width:350px;width:100%;box-shadow:0 15px 50px #0009
+}
+.dialog h2{font-size:28px}
+footer{font-size:12px;color:#c9bce5;margin:25px 0 5px}
+body.light .card,body.light .mapworld{background:#ffffffa8;border-color:#b9a6d6}
+body.light .brand,body.light .smallnote,body.light .logo p,
+body.light .worldsubtitle,body.light .stat small{color:#51416a}
+body.light .iconbtn,body.light .secondary{color:#35204f;background:#ffffffaa}
+body.light #board{background:#4d3970}
+body.light footer{color:#584a70}
 </style>
 </head>
 <body class="world1">
-<h1>🍬 CANDY BLAST 🍭</h1>
-<p class="subtitle">Complete missions • Explore sweet worlds!</p>
 
-<div class="panel">
- <div class="stats">
-  <div class="stat"><small>LEVEL</small><strong id="level">1</strong></div>
-  <div class="stat"><small>MOVES LEFT</small><strong id="moves">20</strong></div>
-  <div class="stat"><small>SCORE</small><strong id="score">0</strong></div>
+<!-- HOME -->
+<section id="home" class="screen">
+ <div class="topbar">
+  <span class="brand">SOHAN STUDIO</span>
+  <button class="iconbtn" onclick="showScreen('settings')" aria-label="Settings">⚙️</button>
  </div>
- <div id="levelName">Candy Garden</div>
- <div id="mission">Mission: Collect candies</div>
- <div id="targets"></div>
-</div>
+ <div class="logo">
+  <div class="candyline">🍬 🍭 🍫</div>
+  <h1>CANDY BLAST</h1>
+  <p>Match • Collect • Explore</p>
+ </div>
+ <div class="hero">
+  <div class="heroart">🍭 🍩 🧁<br>🍬 🍫 🍪</div>
+  <h2>Welcome to Sweet World!</h2>
+  <button class="primary wide" onclick="showScreen('map')">▶ PLAY GAME</button>
+  <br>
+  <button class="secondary wide" onclick="showScreen('map')">🗺️ LEVEL MAP</button>
+  <br>
+  <button class="secondary wide" onclick="showScreen('settings')">⚙️ SETTINGS</button>
+ </div>
+ <div class="smallnote" id="homeProgress">Your sweet adventure starts here!</div>
+ <footer>© SOHAN STUDIO • CANDY BLAST</footer>
+</section>
 
-<div id="board"></div>
-<div id="message">Match 3 or more candies to complete your mission!</div>
-<button onclick="restartLevel()">↻ Restart Level</button>
-<button onclick="toggleSound()" id="soundBtn">🔊 Sound ON</button>
+<!-- LEVEL MAP -->
+<section id="map" class="screen hidden">
+ <div class="topbar">
+  <button class="iconbtn" onclick="showScreen('home')">←</button>
+  <span class="brand">SWEET WORLD MAP</span>
+  <button class="iconbtn" onclick="showScreen('settings')">⚙️</button>
+ </div>
+ <h2>Choose Your Level</h2>
+ <div id="mapContent"></div>
+ <div id="levelPreview" class="card">
+  <h3>Select an open level</h3>
+  <p>Tap a level to see its mission.</p>
+ </div>
+ <button class="primary wide" id="mapPlay" onclick="startSelected()" disabled>PLAY LEVEL</button>
+ <button class="secondary wide" onclick="showScreen('home')">HOME</button>
+</section>
 
+<!-- SETTINGS -->
+<section id="settings" class="screen hidden">
+ <div class="topbar">
+  <button class="iconbtn" onclick="showScreen('home')">←</button>
+  <span class="brand">GAME SETTINGS</span>
+  <span style="width:43px"></span>
+ </div>
+ <h2>⚙️ Settings</h2>
+ <div class="card">
+  <div class="settingrow"><span>🎵 Music</span><button class="toggle" id="musicToggle" onclick="toggleSetting('music')">OFF</button></div>
+  <div class="settingrow"><span>🔊 Sound Effects</span><button class="toggle on" id="soundToggle" onclick="toggleSetting('sound')">ON</button></div>
+  <div class="settingrow"><span>📳 Vibration</span><button class="toggle" id="vibrationToggle" onclick="toggleSetting('vibration')">OFF</button></div>
+  <div class="settingrow"><span>🌐 Language</span>
+   <select id="languageSelect" onchange="changeLanguage(this.value)">
+    <option value="en">English</option><option value="hi">हिंदी</option>
+   </select>
+  </div>
+  <div class="settingrow"><span>🎨 Theme</span>
+   <select id="themeSelect" onchange="changeTheme(this.value)">
+    <option value="dark">Dark</option><option value="light">Light</option>
+   </select>
+  </div>
+ </div>
+ <div class="card">
+  <h3>❔ How to Play</h3>
+  <p>Swap two nearby candies. Match 3 or more identical candies to collect them. Complete the mission before your moves run out!</p>
+  <h3>🍬 About</h3>
+  <p>Candy Blast is a sweet puzzle game made by SOHAN STUDIO.</p>
+ </div>
+ <button class="secondary wide" onclick="showScreen('home')">BACK TO HOME</button>
+</section>
+
+<!-- GAME -->
+<section id="game" class="screen hidden">
+ <div class="topbar">
+  <button class="iconbtn" onclick="askExit()">←</button>
+  <span class="brand">CANDY BLAST</span>
+  <button class="iconbtn" onclick="showScreen('settings')">⚙️</button>
+ </div>
+ <div class="card">
+  <div class="stats">
+   <div class="stat"><small>LEVEL</small><strong id="gameLevel">1</strong></div>
+   <div class="stat"><small>MOVES LEFT</small><strong id="moves">20</strong></div>
+   <div class="stat"><small>SCORE</small><strong id="score">0</strong></div>
+  </div>
+  <h3 id="levelName" style="color:#ffe9a6;margin:13px 0 5px">Candy Garden</h3>
+  <div id="mission" style="font-size:14px;color:#fff0a7">Mission</div>
+  <div id="targets" class="targetrow"></div>
+ </div>
+ <div id="board"></div>
+ <div id="message">Match 3 or more candies!</div>
+ <button class="secondary" onclick="restartLevel()">↻ Restart</button>
+ <button class="secondary" onclick="showScreen('map')">🗺️ Level Map</button>
+</section>
+
+<!-- RESULT POPUP -->
 <div id="overlay">
  <div class="dialog">
-  <h2 id="resultTitle">Level Complete!</h2>
+  <h2 id="resultTitle">LEVEL COMPLETE!</h2>
   <p id="resultText"></p>
-  <button id="nextBtn" onclick="nextLevel()">Next Level ➜</button>
-  <button onclick="restartLevel()">Play Again</button>
+  <button class="primary wide" id="nextBtn" onclick="nextLevel()">NEXT LEVEL ➜</button>
+  <br>
+  <button class="secondary wide" onclick="showScreen('map')">LEVEL MAP</button>
  </div>
 </div>
-<footer>SOHAN STUDIO • CANDY BLAST</footer>
 
 <script>
 "use strict";
+
 const N=8;
 const sweets=["🍬","🍭","🍫","🍩","🍪","🧁"];
 const levels=[
- {name:"Candy Garden",world:1,moves:20,mission:"Collect 12 wrapped candies",goals:[[0,12]]},
- {name:"Chocolate World",world:2,moves:22,mission:"Collect 15 chocolates",goals:[[2,15]]},
- {name:"Lollipop Island",world:3,moves:22,mission:"Collect 18 lollipops",goals:[[1,18]]},
- {name:"Cupcake City",world:4,moves:24,mission:"Collect cupcakes and cookies",goals:[[5,12],[4,10]]},
- {name:"Donut Valley",world:5,moves:23,mission:"Collect 20 donuts",goals:[[3,20]]},
- {name:"Sweet Forest",world:1,moves:24,mission:"Collect candies and lollipops",goals:[[0,12],[1,12]]},
- {name:"Choco Mountain",world:2,moves:25,mission:"Collect 22 chocolates",goals:[[2,22]]},
- {name:"Rainbow Beach",world:3,moves:24,mission:"Collect 20 lollipops",goals:[[1,20]]},
- {name:"Pink Bakery",world:4,moves:25,mission:"Collect cupcakes and donuts",goals:[[5,14],[3,12]]},
- {name:"Green Sweetland",world:5,moves:26,mission:"Collect 25 cookies",goals:[[4,25]]},
- {name:"Candy Castle",world:1,moves:25,mission:"Collect 18 wrapped candies and 15 chocolates",goals:[[0,18],[2,15]]},
- {name:"Chocolate River",world:2,moves:26,mission:"Collect 25 chocolates",goals:[[2,25]]},
- {name:"Lollipop Kingdom",world:3,moves:26,mission:"Collect 25 lollipops",goals:[[1,25]]},
- {name:"Cupcake Paradise",world:4,moves:27,mission:"Collect cupcakes and cookies",goals:[[5,18],[4,15]]},
- {name:"Sweet Jungle",world:5,moves:27,mission:"Collect 28 donuts",goals:[[3,28]]},
- {name:"Golden Candy Road",world:1,moves:28,mission:"Collect three kinds of sweets",goals:[[0,15],[1,15],[2,15]]},
- {name:"Choco Palace",world:2,moves:28,mission:"Collect 30 chocolates",goals:[[2,30]]},
- {name:"Rainbow Kingdom",world:3,moves:29,mission:"Collect lollipops and cupcakes",goals:[[1,20],[5,18]]},
- {name:"Sweet Dreams",world:4,moves:30,mission:"Collect cookies and donuts",goals:[[4,20],[3,20]]},
- {name:"Candy Blast Finale",world:5,moves:32,mission:"Collect all five kinds of sweets",goals:[[0,12],[1,12],[2,12],[3,12],[5,12]]}
+{name:"Candy Garden",world:1,moves:20,mission:"Collect 12 wrapped candies",goals:[[0,12]]},
+{name:"Chocolate World",world:2,moves:22,mission:"Collect 15 chocolates",goals:[[2,15]]},
+{name:"Lollipop Island",world:3,moves:22,mission:"Collect 18 lollipops",goals:[[1,18]]},
+{name:"Cupcake City",world:4,moves:24,mission:"Collect cupcakes and cookies",goals:[[5,12],[4,10]]},
+{name:"Donut Valley",world:5,moves:23,mission:"Collect 20 donuts",goals:[[3,20]]},
+{name:"Sweet Forest",world:1,moves:24,mission:"Collect candies and lollipops",goals:[[0,12],[1,12]]},
+{name:"Choco Mountain",world:2,moves:25,mission:"Collect 22 chocolates",goals:[[2,22]]},
+{name:"Rainbow Beach",world:3,moves:24,mission:"Collect 20 lollipops",goals:[[1,20]]},
+{name:"Pink Bakery",world:4,moves:25,mission:"Collect cupcakes and donuts",goals:[[5,14],[3,12]]},
+{name:"Green Sweetland",world:5,moves:26,mission:"Collect 25 cookies",goals:[[4,25]]},
+{name:"Candy Castle",world:1,moves:25,mission:"Collect candies and chocolates",goals:[[0,18],[2,15]]},
+{name:"Chocolate River",world:2,moves:26,mission:"Collect 25 chocolates",goals:[[2,25]]},
+{name:"Lollipop Kingdom",world:3,moves:26,mission:"Collect 25 lollipops",goals:[[1,25]]},
+{name:"Cupcake Paradise",world:4,moves:27,mission:"Collect cupcakes and cookies",goals:[[5,18],[4,15]]},
+{name:"Sweet Jungle",world:5,moves:27,mission:"Collect 28 donuts",goals:[[3,28]]},
+{name:"Golden Candy Road",world:1,moves:28,mission:"Collect three kinds of sweets",goals:[[0,15],[1,15],[2,15]]},
+{name:"Choco Palace",world:2,moves:28,mission:"Collect 30 chocolates",goals:[[2,30]]},
+{name:"Rainbow Kingdom",world:3,moves:29,mission:"Collect lollipops and cupcakes",goals:[[1,20],[5,18]]},
+{name:"Sweet Dreams",world:4,moves:30,mission:"Collect cookies and donuts",goals:[[4,20],[3,20]]},
+{name:"Candy Blast Finale",world:5,moves:32,mission:"Collect five kinds of sweets",goals:[[0,12],[1,12],[2,12],[3,12],[5,12]]}
 ];
 
-let levelIndex=0,board=[],score=0,moves=20,progress=[];
-let selected=null,busy=false,ended=false,soundOn=true,audioCtx=null;
-let touchStart=null,suppressClick=false;
-
-const boardEl=document.getElementById("board");
-const messageEl=document.getElementById("message");
 const $=id=>document.getElementById(id);
-const config=()=>levels[levelIndex];
+let unlocked=1,completed=[],selectedLevel=1;
+let board=[],score=0,moves=20,progress=[];
+let selected=null,busy=false,ended=false;
+let soundOn=true,musicOn=false,vibrationOn=false;
+let language="en",theme="dark",audioCtx=null;
+let touchStart=null,suppressClick=false;
+let currentLevel=1;
 
+function loadSave(){
+ try{
+  const s=JSON.parse(localStorage.getItem("candyBlastSave")||"{}");
+  unlocked=Math.max(1,Math.min(20,Number(s.unlocked)||1));
+  completed=Array.isArray(s.completed)?s.completed.filter(x=>Number.isInteger(x)&&x>=1&&x<=20):[];
+  soundOn=s.sound!==false;
+  musicOn=s.music===true;
+  vibrationOn=s.vibration===true;
+  language=s.language==="hi"?"hi":"en";
+  theme=s.theme==="light"?"light":"dark";
+ }catch(e){}
+}
+function save(){
+ try{
+  localStorage.setItem("candyBlastSave",JSON.stringify({
+   unlocked,completed,sound:soundOn,music:musicOn,
+   vibration:vibrationOn,language,theme
+  }));
+ }catch(e){}
+}
+function cfg(){return levels[currentLevel-1]}
 function rand(){return Math.floor(Math.random()*sweets.length)}
+function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
+
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden"));
+ $(id).classList.remove("hidden");
+ $("overlay").style.display="none";
+ if(id==="map")renderMap();
+ if(id==="settings")renderSettings();
+ if(id==="home")renderHome();
+}
+function renderHome(){
+ $("homeProgress").textContent=
+ language==="hi"?"आपने "+completed.length+" लेवल पूरे किए हैं।":"Levels completed: "+completed.length+" / 20";
+}
+function renderMap(){
+ const names=["🍬 Candy Garden","🍫 Chocolate World","🍭 Lollipop Island","🧁 Cupcake City","🍩 Sweet Valley"];
+ let html="";
+ for(let w=0;w<5;w++){
+  html+=`<div class="mapworld"><div class="worldtitle">${names[w]}</div>
+  <div class="worldsubtitle">WORLD ${w+1} • LEVELS ${w*4+1}–${Math.min(20,w*4+4)}</div><div class="levelgrid">`;
+  for(let i=w*4+1;i<=Math.min(20,w*4+4);i++){
+   let locked=i>unlocked,done=completed.includes(i),cur=i===unlocked;
+   html+=`<button class="levelbtn ${locked?"locked":""} ${done?"done":""} ${cur&&!done?"current":""}" ${locked?"disabled":""} onclick="selectMapLevel(${i})">${locked?"🔒":done?"✓":i}</button>`;
+  }
+  html+="</div></div>";
+ }
+ $("mapContent").innerHTML=html;
+ $("mapPlay").disabled=selectedLevel>unlocked;
+ $("mapPlay").style.opacity=selectedLevel>unlocked?".5":"1";
+ previewLevel(selectedLevel);
+}
+function selectMapLevel(n){
+ if(n>unlocked)return;
+ selectedLevel=n;
+ previewLevel(n);
+ $("mapPlay").disabled=false;
+}
+function previewLevel(n){
+ const l=levels[n-1];
+ $("levelPreview").innerHTML=
+ `<h3 style="color:#ffe36e">LEVEL ${n} • ${l.name}</h3>
+ <p>${l.mission}</p>
+ <p>Moves: <b>${l.moves}</b></p>
+ <div class="targetrow">${l.goals.map(g=>`<div class="targetitem">${sweets[g[0]]} Target: <b>${g[1]}</b></div>`).join("")}</div>`;
+}
+function startSelected(){
+ if(selectedLevel>unlocked)return;
+ currentLevel=selectedLevel;
+ startLevel();
+ showScreen("game");
+}
+function renderSettings(){
+ $("musicToggle").textContent=musicOn?"ON":"OFF";
+ $("soundToggle").textContent=soundOn?"ON":"OFF";
+ $("vibrationToggle").textContent=vibrationOn?"ON":"OFF";
+ $("musicToggle").classList.toggle("on",musicOn);
+ $("soundToggle").classList.toggle("on",soundOn);
+ $("vibrationToggle").classList.toggle("on",vibrationOn);
+ $("languageSelect").value=language;
+ $("themeSelect").value=theme;
+}
+function toggleSetting(which){
+ if(which==="music")musicOn=!musicOn;
+ if(which==="sound")soundOn=!soundOn;
+ if(which==="vibration")vibrationOn=!vibrationOn;
+ save();renderSettings();
+}
+function changeLanguage(v){
+ language=v;save();
+}
+function changeTheme(v){
+ theme=v;document.body.classList.toggle("light",theme==="light");save();
+}
+function applyTheme(){
+ document.body.classList.toggle("light",theme==="light");
+}
 function makeBoard(){
  board=Array.from({length:N},()=>Array(N).fill(-1));
  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
@@ -134,32 +394,31 @@ function makeBoard(){
  }
 }
 function startLevel(){
- const cfg=config();
- document.body.className="world"+cfg.world;
- moves=cfg.moves;score=0;selected=null;busy=false;ended=false;
- progress=cfg.goals.map(()=>0);
- makeBoard();render();
+ const l=cfg();
+ document.body.className="world"+l.world;
+ if(theme==="light")document.body.classList.add("light");
+ moves=l.moves;score=0;selected=null;busy=false;ended=false;
+ progress=l.goals.map(()=>0);
+ makeBoard();renderBoard();
  $("overlay").style.display="none";
- messageEl.textContent="Complete the mission to win!";
+ $("message").textContent="Match 3 or more candies!";
 }
-function render(){
- const cfg=config();
- $("level").textContent=levelIndex+1;
+function renderBoard(){
+ const l=cfg();
+ $("gameLevel").textContent=currentLevel;
  $("moves").textContent=moves;
  $("score").textContent=score;
- $("levelName").textContent=cfg.name;
- $("mission").textContent="Mission: "+cfg.mission;
- $("targets").innerHTML=cfg.goals.map((g,i)=>
-  `<div class="target">${sweets[g[0]]} <b>${Math.min(progress[i],g[1])}/${g[1]}</b></div>`
- ).join("");
- boardEl.innerHTML="";
+ $("levelName").textContent=l.name;
+ $("mission").textContent="Mission: "+l.mission;
+ $("targets").innerHTML=l.goals.map((g,i)=>
+ `<div class="targetitem">${sweets[g[0]]} <b>${Math.min(progress[i],g[1])}/${g[1]}</b></div>`).join("");
+ const el=$("board");el.innerHTML="";
  for(let r=0;r<N;r++)for(let c=0;c<N;c++){
-  const el=document.createElement("div");
-  el.className="cell"+(board[r][c]<0?" empty":"");
-  el.textContent=board[r][c]<0?"":sweets[board[r][c]];
-  if(selected&&selected.r===r&&selected.c===c)el.classList.add("selected");
-  el.dataset.r=r;el.dataset.c=c;
-  boardEl.appendChild(el);
+  const cell=document.createElement("div");
+  cell.className="cell"+(board[r][c]<0?" empty":"");
+  cell.textContent=board[r][c]<0?"":sweets[board[r][c]];
+  if(selected&&selected.r===r&&selected.c===c)cell.classList.add("selected");
+  cell.dataset.r=r;cell.dataset.c=c;el.appendChild(cell);
  }
 }
 function matches(){
@@ -184,35 +443,34 @@ function matches(){
  }
  return [...found].map(s=>s.split(",").map(Number));
 }
-function adjacent(a,b){return Math.abs(a.r-b.r)+Math.abs(a.c-b.c)===1}
 function swap(a,b){
  const t=board[a.r][a.c];board[a.r][a.c]=board[b.r][b.c];board[b.r][b.c]=t;
 }
+function adjacent(a,b){return Math.abs(a.r-b.r)+Math.abs(a.c-b.c)===1}
 function playSound(){
  if(!soundOn)return;
  try{
   audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==="suspended")audioCtx.resume();
   const o=audioCtx.createOscillator(),g=audioCtx.createGain();
   o.connect(g);g.connect(audioCtx.destination);
   o.frequency.value=620;g.gain.value=.045;
   o.start();o.stop(audioCtx.currentTime+.1);
  }catch(e){}
 }
-const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
-
+function vibrate(){
+ if(vibrationOn&&navigator.vibrate)navigator.vibrate(35);
+}
 async function clearMatches(){
  while(true){
   const found=matches();
   if(!found.length)break;
   const counts=Array(sweets.length).fill(0);
   found.forEach(([r,c])=>counts[board[r][c]]++);
-  config().goals.forEach((goal,i)=>{
-   progress[i]+=counts[goal[0]];
-  });
+  cfg().goals.forEach((g,i)=>progress[i]+=counts[g[0]]);
   score+=found.length*10;
   found.forEach(([r,c])=>board[r][c]=-1);
-  playSound();render();await wait(180);
-
+  playSound();vibrate();renderBoard();await wait(160);
   for(let c=0;c<N;c++){
    let write=N-1;
    for(let r=N-1;r>=0;r--){
@@ -224,86 +482,92 @@ async function clearMatches(){
    }
    for(let r=write;r>=0;r--)board[r][c]=rand();
   }
-  render();await wait(160);
+  renderBoard();await wait(140);
  }
 }
 function missionComplete(){
- return config().goals.every((g,i)=>progress[i]>=g[1]);
-}
-function showResult(won){
- ended=true;
- $("resultTitle").textContent=won?"🎉 LEVEL COMPLETE!":"😢 TRY AGAIN";
- $("resultText").textContent=won?
-  "Amazing! You completed "+config().name+". Your score: "+score:
-  "Moves are over. Complete the mission to continue.";
- $("nextBtn").style.display=won?"inline-block":"none";
- $("nextBtn").textContent=levelIndex===levels.length-1?"Finish Game 🏆":"Next Level ➜";
- $("overlay").style.display="flex";
+ return cfg().goals.every((g,i)=>progress[i]>=g[1]);
 }
 async function choose(r,c){
  if(busy||ended)return;
  const here={r,c};
- if(!selected){selected=here;render();return}
- if(selected.r===r&&selected.c===c){selected=null;render();return}
- if(!adjacent(selected,here)){selected=here;render();return}
+ if(!selected){selected=here;renderBoard();return}
+ if(selected.r===r&&selected.c===c){selected=null;renderBoard();return}
+ if(!adjacent(selected,here)){selected=here;renderBoard();return}
  const old=selected;selected=null;busy=true;
- swap(old,here);render();await wait(120);
+ swap(old,here);renderBoard();await wait(100);
  if(!matches().length){
-  swap(old,here);render();
-  messageEl.textContent="No match! Try another move.";
+  swap(old,here);renderBoard();
+  $("message").textContent="No match! Try another move.";
  }else{
-  moves--;
-  messageEl.textContent="Sweet! Great match!";
+  moves--;$("message").textContent="Sweet! Great match!";
   await clearMatches();
-  if(missionComplete())showResult(true);
-  else if(moves<=0)showResult(false);
-  else messageEl.textContent="Keep going! Complete your mission.";
+  if(missionComplete())finish(true);
+  else if(moves<=0)finish(false);
+  else $("message").textContent="Keep going! Complete your mission.";
  }
  busy=false;
 }
-function restartLevel(){startLevel()}
-function nextLevel(){
- if(levelIndex===levels.length-1){
-  $("resultTitle").textContent="🏆 YOU ARE A CANDY CHAMPION!";
-  $("resultText").textContent="You completed all 20 levels. Amazing!";
-  $("nextBtn").style.display="none";
-  return;
+function finish(won){
+ ended=true;
+ if(won){
+  if(!completed.includes(currentLevel))completed.push(currentLevel);
+  unlocked=Math.max(unlocked,Math.min(20,currentLevel+1));
+  save();
  }
- levelIndex++;
+ $("resultTitle").textContent=won?"🎉 LEVEL COMPLETE!":"😢 TRY AGAIN";
+ $("resultText").textContent=won?
+ "Amazing! You completed "+cfg().name+". Score: "+score:
+ "Moves are over. Try this level again!";
+ $("nextBtn").style.display=won&&currentLevel<20?"inline-block":"none";
+ if(won&&currentLevel===20){
+  $("resultTitle").textContent="🏆 CANDY CHAMPION!";
+  $("resultText").textContent="You completed all 20 levels!";
+ }
+ $("overlay").style.display="flex";
+}
+function nextLevel(){
+ if(currentLevel>=20){
+  $("overlay").style.display="none";showScreen("home");return;
+ }
+ selectedLevel=currentLevel+1;
+ currentLevel=selectedLevel;
  startLevel();
 }
-function toggleSound(){
- soundOn=!soundOn;
- $("soundBtn").textContent=soundOn?"🔊 Sound ON":"🔇 Sound OFF";
+function restartLevel(){startLevel()}
+function askExit(){
+ if(busy)return;
+ showScreen("map");
 }
+
+/* Tap and swipe controls */
+const boardEl=$("board");
 boardEl.addEventListener("click",e=>{
- const cell=e.target.closest(".cell");
- if(!cell)return;
+ const cell=e.target.closest(".cell");if(!cell)return;
  if(suppressClick){suppressClick=false;return}
- choose(Number(cell.dataset.r),Number(cell.dataset.c));
+ choose(+cell.dataset.r,+cell.dataset.c);
 });
-boardEl.addEventListener("touchstart",e=>{
- const cell=e.target.closest(".cell");
- if(!cell||busy||ended)return;
- touchStart={r:+cell.dataset.r,c:+cell.dataset.c,x:e.touches[0].clientX,y:e.touches[0].clientY};
-},{passive:true});
-boardEl.addEventListener("touchend",e=>{
+boardEl.addEventListener("pointerdown",e=>{
+ const cell=e.target.closest(".cell");if(!cell||busy||ended)return;
+ touchStart={r:+cell.dataset.r,c:+cell.dataset.c,x:e.clientX,y:e.clientY};
+});
+boardEl.addEventListener("pointerup",e=>{
  if(!touchStart)return;
- const dx=e.changedTouches[0].clientX-touchStart.x;
- const dy=e.changedTouches[0].clientY-touchStart.y;
  const start=touchStart;touchStart=null;
+ const dx=e.clientX-start.x,dy=e.clientY-start.y;
  if(Math.max(Math.abs(dx),Math.abs(dy))<18)return;
  let r=start.r,c=start.c;
  if(Math.abs(dx)>Math.abs(dy))c+=dx>0?1:-1;
  else r+=dy>0?1:-1;
- if(r>=0&&r<N&&c>=0&&c<N){
-  suppressClick=true;
-  choose(start.r,start.c).then(()=>{});
-  setTimeout(()=>choose(r,c),30);
- }
-},{passive:true});
+ if(r<0||r>=N||c<0||c>=N)return;
+ suppressClick=true;
+ selected={r:start.r,c:start.c};
+ choose(r,c);
+});
+boardEl.addEventListener("pointercancel",()=>touchStart=null);
 
-startLevel();
+loadSave();applyTheme();renderSettings();renderHome();
+showScreen("home");
 </script>
 </body>
 </html>
