@@ -106,7 +106,11 @@ body.light .secondary{color:#35204f;background:#ffffffaa}
 <body class="world1">
 <section id="home" class="screen">
  <div class="game-topbar">
-  <div class="top-stat">❤️ <b>5</b><small>Lives</small></div>
+  <div class="top-stat">
+  ❤️ <b id="lifeCount">5</b>
+  <small>Lives</small>
+  <small id="lifeTimer">FULL</small>
+  </div>
   <div class="top-stat">🪙 <b id="coinCount">350</b><small>Coins</small></div>
   <div class="top-stat">⭐ <b id="starCount">0</b><small>Stars</small></div>
   <button class="map-settings" onclick="showScreen('settings')">⚙️</button>
@@ -206,6 +210,76 @@ const levels=[
 const worldNames=["🍬 CANDY GARDEN","🍫 CHOCOLATE WORLD","🏝️ LOLLIPOP ISLAND","🧁 CUPCAKE CITY","🍩 DONUT VALLEY"];
 let unlocked=1,completed=[],starScores={},currentLevel=1,board=[],score=0,moves=20,progress=[],selected=null,busy=false,ended=false;
 let soundOn=true,musicOn=false,vibrationOn=false,language="en",theme="dark",audioCtx=null,musicTimer=null,musicStep=0,touchStart=null,suppressClick=false;
+// REAL LIVES SYSTEM
+const MAX_LIVES=5;
+const LIFE_INTERVAL=30*60*1000;
+let lives=5;
+let lifeUpdatedAt=Date.now();
+
+function updateLives(){
+ const now=Date.now();
+
+ if(lives<MAX_LIVES){
+  const elapsed=now-lifeUpdatedAt;
+  const recovered=Math.floor(elapsed/LIFE_INTERVAL);
+
+  if(recovered>0){
+   lives=Math.min(MAX_LIVES,lives+recovered);
+   lifeUpdatedAt+=recovered*LIFE_INTERVAL;
+
+   if(lives>=MAX_LIVES){
+    lifeUpdatedAt=now;
+   }
+   save();
+  }
+ }else{
+  lifeUpdatedAt=now;
+ }
+
+ renderLives();
+}
+
+function renderLives(){
+ const count=$("lifeCount");
+ const timer=$("lifeTimer");
+
+ if(count)count.textContent=lives;
+
+ if(timer){
+  if(lives>=MAX_LIVES){
+   timer.textContent="FULL";
+  }else{
+   const remaining=Math.max(0,LIFE_INTERVAL-(Date.now()-lifeUpdatedAt));
+   const minutes=Math.floor(remaining/60000);
+   const seconds=Math.floor((remaining%60000)/1000);
+
+   timer.textContent="Next ❤️ "+String(minutes).padStart(2,"0")+":"+String(seconds).padStart(2,"0");
+  }
+ }
+}
+
+function loseLife(){
+ updateLives();
+
+ if(lives>0){
+  lives--;
+  if(lives===MAX_LIVES-1){
+   lifeUpdatedAt=Date.now();
+  }
+  save();
+  renderLives();
+ }
+}
+
+function showNoLives(){
+ updateLives();
+
+ $("resultTitle").textContent="❤️ NO LIVES LEFT";
+ $("earnedStars").textContent="❤️";
+ $("resultText").textContent="Wait for your next Life. "+$("lifeTimer").textContent;
+ $("nextBtn").style.display="none";
+ $("overlay").style.display="flex";
+}
 const $=id=>document.getElementById(id),wait=ms=>new Promise(r=>setTimeout(r,ms)),cfg=()=>levels[currentLevel-1],rand=()=>Math.floor(Math.random()*sweets.length);
 function loadSave(){try{const s=JSON.parse(localStorage.getItem("candyBlastSave")||"{}");unlocked=Math.max(1,Math.min(20,Number(s.unlocked)||1));completed=Array.isArray(s.completed)?s.completed.filter(x=>Number.isInteger(x)&&x>=1&&x<=20):[];starScores=s.starScores||{};soundOn=s.sound!==false;musicOn=s.music===true;vibrationOn=s.vibration===true;language=s.language==="hi"?"hi":"en";theme=s.theme==="light"?"light":"dark"}catch(e){}}
 function save(){try{localStorage.setItem("candyBlastSave",JSON.stringify({unlocked,completed,starScores,sound:soundOn,music:musicOn,vibration:vibrationOn,language,theme}))}catch(e){}}
