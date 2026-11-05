@@ -508,7 +508,17 @@ boardEl.addEventListener("pointerup",e=>{
  suppressClick=true;selected={r:s.r,c:s.c};choose(r,c);
 });
 boardEl.addEventListener("pointercancel",()=>touchStart=null);
-loadSave();applyTheme();renderSettings();renderHome();showScreen("home");
+loadSave();
+applyTheme();
+renderSettings();
+renderHome();
+showScreen("home");
+
+setInterval(updateLives,1000);
+
+document.addEventListener("visibilitychange",()=>{
+ if(!document.hidden)updateLives();
+});
 </script>
 </body>
 </html>
